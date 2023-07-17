@@ -3,6 +3,7 @@ import sys,os,re,math
 global _error_color
 _error_color = True
 
+
 class Error:
 	def __init__(self,typ,desc,tok=None):
 		self.type = typ
