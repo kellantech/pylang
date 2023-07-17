@@ -1,0 +1,3 @@
+importPY <test>
+
+print(function(100));

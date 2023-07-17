@@ -1,0 +1,35 @@
+PI = 3.14159265;
+E = 2.71828183;
+
+fn mod(a,b){
+	while a > 0{
+		a = a-b;
+	};
+	ret a+b;
+};
+
+fn sin(x){
+	a = mod(x,2*PI);
+	rs = 0;
+	m1 = -1;
+
+	for (i=0,i<11,++i){
+		rs = rs + ((m1.pow(i) / factorial(2 * i + 1)) * x.pow(2*i+1));
+	};
+
+	ret rs;
+};
+
+fn cos(x){
+	ret sin((PI/2) - x);
+};
+
+
+fn factorial(x){
+	s = 1;
+	for (c = 1,c<=x,++c){
+		s = s * c;
+	};
+	ret s;
+};
+

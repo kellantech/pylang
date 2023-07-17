@@ -1,0 +1,36 @@
+value       : (INT|FLOAT)
+            : LP expr RP
+						: (PLUS|MINUS) value
+						: IDENTIFIER
+						: IDENTIFIER LP (value)* RP
+						: LQ (char)* RQ
+						: RB (comparision)* LB
+						: IDENRIFIER DOT IDENTIFIER
+						:	IDENRIFIER DOT IDENTIFIER LP (comparision (coma)?)*
+
+term        : value ((MUL|DIV) value)*
+
+var-set     : KEYWORD:var IDENTIFIER EQ expr
+
+logexpr     : comparison ((AND|OR) comparision)*
+
+comparision : expr (EQL|GT|LT|GEQ|LEQ|NEQ) expr
+
+if-expr     : KEYWORD:if comparision block (KEYWORD:elif comparision block)* (KEYWORD:else block)?
+
+func-def    : KEYWORD:fn IDENTIFIER LP (IDENTIFIER (COMA)?)* RP fn-block
+
+while       : KEYWORD:while comparision block
+
+for-expr		: KEYWORD:for LP var-set COMA comparision COMA comparision RP block
+
+expr        : term ((ADD|SUB) term)*
+						: var-set
+						: if-expr
+						: func-def
+						: while-expr
+						: IDENTIFIER EQ comparision
+
+block       : LBRK (comparision SCLN)* RBRK
+            
+fn-block    :LBRK (comparision|KEYWORD:ret SCLN)* RBRK

@@ -1,0 +1,11 @@
+_PY_EXEC("import os");
+
+fn cmd(command){
+	ret _PY_EXEC("os.popen('"+command+"').read()");
+};
+
+
+fn exit(){
+	ret _PY_EXEC("exit()");
+};
+

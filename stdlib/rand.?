@@ -1,0 +1,12 @@
+import <math>
+
+fn get_seed(){
+	ret _PY_EXEC("int(__import__('time').time() * 100000)%100000");
+};
+
+
+fn random(max){
+	s = mod(get_seed(),max);
+	ret s;
+};
+
